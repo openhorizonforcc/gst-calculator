@@ -33,7 +33,7 @@ Total including GST: $110.00
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/gst-calculator.git
+git clone https://github.com/openhorizonforcc/gst-calculator.git
 ```
 
 Navigate to the project folder:
