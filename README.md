@@ -57,3 +57,15 @@ python gst_calculator.py
 - Export calculations to PDF
 - GUI version using Tkinter or PyQt
 - Web version using Streamlit or Flask
+
+
+## Version History
+
+### Version 2.0
+
+Features added:
+
+- GST exclusive calculations
+- GST inclusive calculations
+- Menu system
+- Improved user experience
