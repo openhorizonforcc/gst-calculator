@@ -1,32 +1,59 @@
-# Australian GST Calculator 🇦🇺
-A simple Python application that calculates the Goods and Services Tax (GST) for Australian businesses.
+# Australian GST Calculator
 
+A simple Python command-line application for calculating Australian Goods and Services Tax (GST).
+
+The calculator supports GST-exclusive, GST-inclusive, and GST-free/input-taxed sale amounts. It uses decimal currency arithmetic so results round predictably to cents.
 
 ## Features
-- Calculate GST (10%) on an amount excluding GST
-- Display the GST amount
-- Display the total amount including GST
-- Simple command-line interface
-- Beginner-friendly Python code
+
+- Calculate 10% GST on a GST-exclusive amount
+- Extract GST from a GST-inclusive amount
+- Record GST-free or input-taxed amounts with zero GST
+- Validate blank, invalid, and negative amounts
+- Accept common money formats such as `100`, `99.95`, `$100`, and `1,250.50`
+- Display values as Australian dollar amounts
+- Keep GST calculation logic in reusable functions
 
 ## Example
 
-Input:
+GST-exclusive sale:
 
 ```text
-Enter amount excluding GST: 100
+Australian GST Calculator
+--------------------------
+1. GST exclusive sale
+2. GST inclusive sale
+3. GST-free or input-taxed sale
+Select option (1, 2, or 3): 1
+Enter amount: 100
+
+GST exclusive calculation
+--------------------------
+Original amount: $100.00
+GST amount:      $10.00
+Net amount:      $100.00
+Total amount:    $110.00
 ```
 
-Output:
+GST-inclusive sale:
 
 ```text
-GST: $10.00
-Total including GST: $110.00
+Select option (1, 2, or 3): 2
+Enter amount: $110
+
+GST inclusive calculation
+--------------------------
+Original amount: $110.00
+GST amount:      $10.00
+Net amount:      $100.00
+Total amount:    $110.00
 ```
 
 ## Requirements
 
 - Python 3.9 or later
+
+No external packages are required.
 
 ## How to Run
 
@@ -48,24 +75,35 @@ Run the program:
 python gst_calculator.py
 ```
 
-## Future Improvements
+## Production-Readiness Improvements Added
 
-- Support GST-inclusive calculations
-- Input validation for invalid or negative values
-- User-friendly menu interface
-- Receipt generation
-- Export calculations to PDF
-- GUI version using Tkinter or PyQt
-- Web version using Streamlit or Flask
+- Replaced `float` with `Decimal` for currency-safe calculations
+- Added validation for invalid, blank, and negative amounts
+- Split calculation logic into reusable functions
+- Added support for GST-free and input-taxed sales
+- Improved output formatting for business-friendly dollar values
 
+## Suggested Next Steps
+
+- Add automated tests for rounding, invalid input, inclusive GST, and exclusive GST
+- Export calculations to CSV for record keeping
+- Generate invoice or receipt PDFs with business name, ABN, date, GST treatment, and totals
+- Add configuration for business details and transaction categories
+- Build a small web or desktop interface for non-technical users
 
 ## Version History
 
+### Version 3.0
+
+- Added decimal-based currency calculations
+- Added input validation
+- Added GST-free/input-taxed option
+- Refactored calculation logic into functions
+- Updated documentation and examples
+
 ### Version 2.0
 
-Features added:
-
-- GST exclusive calculations
-- GST inclusive calculations
-- Menu system
+- Added GST-exclusive calculations
+- Added GST-inclusive calculations
+- Added menu system
 - Improved user experience
