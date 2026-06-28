@@ -1,5 +1,11 @@
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
+def print_header():
+    print("=" * 34)
+    print("      AUSTRALIAN GST CALCULATOR")
+    print("=" * 34)
+
+print_header()
 
 GST_RATE = Decimal("0.10")
 CENT = Decimal("0.01")
