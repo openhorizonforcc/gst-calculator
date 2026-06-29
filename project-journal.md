@@ -25,3 +25,53 @@
 - Error handling
 - Save calculations
 - Export reports
+
+
+## Day 4
+
+### Topic
+
+Debugging and error handling
+
+### What I learned
+
+- try / except
+- debugging
+- testing
+- main() function
+
+### Bugs found
+
+- invalid text input
+- negative values
+- menu errors
+
+### Future improvements
+
+- save results
+- export reports
+- GUI interface
+
+## Day 5
+
+### Topic
+
+Functions, modules and code reuse
+
+### What I learned
+
+- DRY principle
+- utility functions
+- modules
+- imports
+
+### What surprised me
+
+- Python programs can span multiple files
+- functions simplify maintenance
+
+### Future improvements
+
+- save calculations
+- export reports
+- GUI version
