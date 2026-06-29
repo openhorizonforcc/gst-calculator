@@ -1,5 +1,5 @@
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
-
+from gst_utils import calculate_gst_exclusive
 
 GST_RATE = Decimal("0.10")
 CENT = Decimal("0.01")
