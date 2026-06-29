@@ -1,33 +1,38 @@
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
-def print_header():
-    print("=" * 34)
-    print("      AUSTRALIAN GST CALCULATOR")
-    print("=" * 34)
-
-print_header()
 
 GST_RATE = Decimal("0.10")
 CENT = Decimal("0.01")
 
 
+def print_header():
+    """Display the calculator title at the top of the program."""
+    print("=" * 34)
+    print("      AUSTRALIAN GST CALCULATOR")
+    print("=" * 34)
+
+
 def format_money(amount):
+    """Format a Decimal amount as Australian dollars rounded to cents."""
     return f"${amount.quantize(CENT, rounding=ROUND_HALF_UP):,.2f}"
 
 
 def calculate_gst_exclusive(amount):
+    """Calculate GST and total price for an amount that excludes GST."""
     gst = (amount * GST_RATE).quantize(CENT, rounding=ROUND_HALF_UP)
     total = amount + gst
     return gst, total
 
 
 def calculate_gst_inclusive(amount):
+    """Extract GST and net price from an amount that already includes GST."""
     gst = (amount / Decimal("11")).quantize(CENT, rounding=ROUND_HALF_UP)
     exclusive = amount - gst
     return gst, exclusive
 
 
 def parse_money(value):
+    """Convert user-entered money text into a valid Decimal amount."""
     cleaned_value = value.strip().replace("$", "").replace(",", "")
 
     if not cleaned_value:
@@ -45,8 +50,7 @@ def parse_money(value):
 
 
 def get_menu_choice():
-    print("Australian GST Calculator")
-    print("--------------------------")
+    """Ask the user to choose which GST calculation they want to perform."""
     print("1. GST exclusive sale")
     print("2. GST inclusive sale")
     print("3. GST-free or input-taxed sale")
@@ -61,6 +65,7 @@ def get_menu_choice():
 
 
 def get_amount():
+    """Ask the user for an amount until they enter a valid money value."""
     while True:
         try:
             return parse_money(input("Enter amount: "))
@@ -69,6 +74,7 @@ def get_amount():
 
 
 def print_result(label, amount, gst, net_amount, total):
+    """Display the completed GST calculation in a readable format."""
     print(f"\n{label}")
     print("--------------------------")
     print(f"Original amount: {format_money(amount)}")
@@ -77,18 +83,26 @@ def print_result(label, amount, gst, net_amount, total):
     print(f"Total amount:    {format_money(total)}")
 
 
-def main():
-    choice = get_menu_choice()
-    amount = get_amount()
-
+def calculate_result(choice, amount):
+    """Run the selected GST calculation and return the values to display."""
     if choice == "1":
         gst, total = calculate_gst_exclusive(amount)
-        print_result("GST exclusive calculation", amount, gst, amount, total)
-    elif choice == "2":
+        return "GST exclusive calculation", gst, amount, total
+
+    if choice == "2":
         gst, exclusive = calculate_gst_inclusive(amount)
-        print_result("GST inclusive calculation", amount, gst, exclusive, amount)
-    else:
-        print_result("GST-free/input-taxed calculation", amount, Decimal("0.00"), amount, amount)
+        return "GST inclusive calculation", gst, exclusive, amount
+
+    return "GST-free/input-taxed calculation", Decimal("0.00"), amount, amount
+
+
+def main():
+    """Run the command-line GST calculator from start to finish."""
+    print_header()
+    choice = get_menu_choice()
+    amount = get_amount()
+    label, gst, net_amount, total = calculate_result(choice, amount)
+    print_result(label, amount, gst, net_amount, total)
 
 
 if __name__ == "__main__":
