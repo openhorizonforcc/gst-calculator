@@ -20,7 +20,12 @@ def format_money(amount):
 def calculate_gst_exclusive(amount):
     """Calculate GST and total price for an amount that excludes GST."""
     gst = (amount * GST_RATE).quantize(CENT, rounding=ROUND_HALF_UP)
+    print("DEBUG: amount =", amount)
+    print("DEBUG: gst =", gst)
+    
     total = amount + gst
+    print("DEBUG: total =", total)
+
     return gst, total
 
 
@@ -71,7 +76,7 @@ def get_amount():
             return parse_money(input("Enter amount: "))
         except ValueError as error:
             print(f"Invalid amount: {error}")
-
+            
 
 def print_result(label, amount, gst, net_amount, total):
     """Display the completed GST calculation in a readable format."""
@@ -107,3 +112,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

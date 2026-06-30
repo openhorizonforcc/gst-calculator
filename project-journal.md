@@ -75,3 +75,28 @@ Functions, modules and code reuse
 - save calculations
 - export reports
 - GUI version
+
+
+## Day 6 01/07/2026
+
+### Topic
+
+Testing and debugging
+
+### What I learned
+
+- test cases
+- edge cases
+- debugging
+- bug tracking
+
+### Interesting insight
+
+Professional developers spend a large amount of time testing and debugging.
+
+### Future improvements
+
+- automated tests
+- unit testing
+- reporting
+- export functions
